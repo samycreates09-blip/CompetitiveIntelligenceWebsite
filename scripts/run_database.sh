@@ -14,4 +14,4 @@ if [[ ! -f "$PG_DATA/PG_VERSION" ]]; then
   initdb -D "$PG_DATA" --username="$PG_USER" --auth=trust --encoding=UTF8
 fi
 
-exec postgres -D "$PG_DATA" -p "$PG_PORT" -h 127.0.0.1
+exec postgres -D "$PG_DATA" -p "$PG_PORT" -h 127.0.0.1 -k "$PG_DATA"
