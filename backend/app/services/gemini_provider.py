@@ -53,12 +53,7 @@ def _generate_text(contents: str, system_instruction: str, api_key: str, model: 
     safe_model = safe_model_name(model)
     client = None
     try:
-        client = genai.Client(
-            api_key=api_key,
-            http_options=types.HttpOptions(
-                retry_options=types.HttpRetryOptions(attempts=1),
-            ),
-        )
+        client = genai.Client(api_key=api_key)
         response = client.models.generate_content(
             model=model,
             contents=contents,
@@ -143,12 +138,7 @@ def create_tool_session(
         for declaration in tool_declarations
     ])
     try:
-        client = genai.Client(
-            api_key=api_key,
-            http_options=types.HttpOptions(
-                retry_options=types.HttpRetryOptions(attempts=1),
-            ),
-        )
+        client = genai.Client(api_key=api_key)
         chat = client.chats.create(
             model=model,
             config=types.GenerateContentConfig(

@@ -38,12 +38,7 @@ def embed_texts(
     safe_model = safe_model_name(model)
     client = None
     try:
-        client = genai.Client(
-            api_key=api_key,
-            http_options=types.HttpOptions(
-                retry_options=types.HttpRetryOptions(attempts=1),
-            ),
-        )
+        client = genai.Client(api_key=api_key)
         response = client.models.embed_content(
             model=model,
             contents=texts,
